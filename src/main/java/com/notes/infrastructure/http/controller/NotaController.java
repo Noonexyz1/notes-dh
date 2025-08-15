@@ -2,11 +2,16 @@ package com.notes.infrastructure.http.controller;
 
 import com.notes.domain.model.Nota;
 import com.notes.domain.port.in.NotaService;
+import com.notes.infrastructure.http.dto.NotaDTO;
+import com.notes.infrastructure.http.mapper.NotaDTOMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/v1/nota")
@@ -15,34 +20,62 @@ public class NotaController {
     @Autowired
     private NotaService notaService;
 
-    public void crearNota(Nota nota) {
-        Nota nota1 = this.notaService.crearNota(nota);
+    // POST /api/v1/notas
+    @PostMapping
+    public ResponseEntity<NotaDTO> crearNota(@RequestBody NotaDTO notaDTO) {
+        Nota nota = NotaDTOMapper.INSTANCE.toNota(notaDTO);
+        Nota notaCreada = notaService.crearNota(nota);
+        NotaDTO responseDTO = NotaDTOMapper.INSTANCE.toNotaDTO(notaCreada);
+        return new ResponseEntity<>(responseDTO, HttpStatus.CREATED);
     }
 
-    //Con este pageable hacermos la parte de busqueda avanzada
-    public void listaDeNotas(Pageable pageable) {
-        Page<Nota> asdf = this.notaService.listaDeNotas(pageable);
+    // GET /api/v1/notas?page=0&size=10&sort=createdAt,desc
+    @GetMapping
+    public ResponseEntity<Page<NotaDTO>> listaDeNotas(Pageable pageable) {
+        Page<Nota> notas = notaService.listaDeNotas(pageable);
+        Page<NotaDTO> dtoPage = notas.map(NotaDTOMapper.INSTANCE::toNotaDTO);
+        return ResponseEntity.ok(dtoPage);
     }
 
-    public void verNota(Long idNota) {
-        Nota nota1 = this.notaService.verNota(idNota);
+    // GET /api/v1/notas/{id}
+    @GetMapping("/{id}")
+    public ResponseEntity<NotaDTO> verNota(@PathVariable Long id) {
+        Optional<Nota> nota = notaService.verNota(id);
+        return nota.map(n -> ResponseEntity.ok(NotaDTOMapper.INSTANCE.toNotaDTO(n)))
+                .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
+    // PUT /api/v1/notas/{id}
+    @PutMapping("/{id}")
+    public ResponseEntity<NotaDTO> editarNota(
+            @PathVariable Long id,
+            @RequestBody NotaDTO notaDTO ) {
 
-    public void editarNota(Long idNota, Nota notaEditada) {
-        Nota nota1 = this.notaService.editarNota(idNota, notaEditada);
+        Nota nota = NotaDTOMapper.INSTANCE.toNota(notaDTO);
+        Nota notaActualizada = notaService.editarNota(id, nota);
+        NotaDTO responseDTO = NotaDTOMapper.INSTANCE.toNotaDTO(notaActualizada);
+        return ResponseEntity.ok(responseDTO);
     }
 
-    public void eliminarNota(Long idNota) {
-        this.notaService.eliminarNota(idNota);
+    // DELETE /api/v1/notas/{id}
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> eliminarNota(@PathVariable Long id) {
+        notaService.eliminarNota(id);
+        return ResponseEntity.noContent().build();
     }
 
-
-    public void archivarNota(Long idNota) {
-        this.notaService.archivarNota(idNota);
+    // PATCH /api/v1/notas/{id}/archivar
+    @PatchMapping("/{id}/archivar")
+    public ResponseEntity<Void> archivarNota(@PathVariable Long id) {
+        notaService.archivarNota(id);
+        return ResponseEntity.noContent().build();
     }
 
-    public void desarchivarNota(Long idNota) {
-        Nota asdf = this.notaService.desarchivarNota(idNota);
+    // PATCH /api/v1/notas/{id}/desarchivar
+    @PatchMapping("/{id}/desarchivar")
+    public ResponseEntity<NotaDTO> desarchivarNota(@PathVariable Long id) {
+        Nota nota = notaService.desarchivarNota(id);
+        NotaDTO responseDTO = NotaDTOMapper.INSTANCE.toNotaDTO(nota);
+        return ResponseEntity.ok(responseDTO);
     }
 }
