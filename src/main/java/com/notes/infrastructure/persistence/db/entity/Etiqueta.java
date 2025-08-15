@@ -17,6 +17,9 @@ public class Etiqueta {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(nullable = false, unique = true)
+    private String nombre;
+
     @OneToMany(mappedBy = "etiqueta")
     private List<NotaEtiqueta> notaEtiquetaList;
 }

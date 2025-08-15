@@ -17,6 +17,12 @@ public class Rol {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(nullable = false, unique = true)
+    private String nombre;
+
+    private String descripcion;
+
+
     @OneToMany(mappedBy = "rol")
     private List<UsuarioRol> usuarioRolList;
 }

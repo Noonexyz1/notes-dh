@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -14,6 +16,12 @@ public class NotaVersion {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Lob
+    private String contenido;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    private LocalDateTime timestamp;
 
     @ManyToOne
     private Usuario usuario;

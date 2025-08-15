@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -14,6 +16,14 @@ public class DetalleNota {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Lob
+    private String observaciones;
+
+    private boolean esPrivado;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    private LocalDateTime fechaCreacion;
 
     @ManyToOne
     private Nota nota;
