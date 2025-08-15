@@ -11,20 +11,20 @@ import java.time.LocalDateTime;
 @Setter
 @NoArgsConstructor
 @Entity
-@Table(name = "detalle_nota")
-public class DetalleNota {
+@Table(name = "nota_version")
+public class NotaVersionEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Lob
-    private String observaciones;
-
-    private boolean esPrivado;
+    private String contenido;
 
     @Temporal(TemporalType.TIMESTAMP)
-    private LocalDateTime fechaCreacion;
+    private LocalDateTime timestamp;
 
     @ManyToOne
-    private Nota nota;
+    private UsuarioEntity usuario;
+    @ManyToOne
+    private NotaEntity nota;
 }

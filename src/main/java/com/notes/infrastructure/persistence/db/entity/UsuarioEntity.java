@@ -12,7 +12,7 @@ import java.util.List;
 @NoArgsConstructor
 @Entity
 @Table(name = "usuario")
-public class Usuario {
+public class UsuarioEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -24,11 +24,11 @@ public class Usuario {
     private String contrasena;
 
     @ManyToOne
-    private Persona persona;
+    private PersonaEntity persona;
     @OneToMany(mappedBy = "usuario")
-    private List<UsuarioRol> usuarioRolList;
+    private List<UsuarioRolEntity> usuarioRolList;
     @OneToMany(mappedBy = "usuario")
-    private List<Nota> notaList;
+    private List<NotaEntity> notaList;
     @OneToMany(mappedBy = "usuario")
-    private List<NotaVersion> notaVersionList;
+    private List<NotaVersionEntity> notaVersionList;
 }

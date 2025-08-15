@@ -10,11 +10,11 @@ import lombok.Setter;
 @NoArgsConstructor
 @Entity
 @Table(name = "nota_archivada")
-public class NotaArchivada {
+public class NotaArchivadaEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne
-    private Nota nota;
+    private NotaEntity nota;
 }

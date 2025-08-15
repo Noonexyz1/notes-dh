@@ -6,31 +6,24 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Getter
 @Setter
 @NoArgsConstructor
 @Entity
-@Table(name = "persona")
-public class Persona {
+@Table(name = "usuario_rol")
+public class UsuarioRolEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
-    private String nombre;
-
-    @Column(nullable = false)
-    private String apellido;
-
     @Temporal(TemporalType.TIMESTAMP)
     private LocalDateTime createdAt;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    private LocalDateTime updatedAt;
+    private boolean estaActivo;
 
-
-    @OneToMany(mappedBy = "persona")
-    private List<Usuario> usuarioList;
+    @ManyToOne
+    private UsuarioEntity usuario;
+    @ManyToOne
+    private RolEntity rol;
 }

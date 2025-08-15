@@ -5,21 +5,23 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.List;
+import java.time.LocalDateTime;
 
 @Getter
 @Setter
 @NoArgsConstructor
 @Entity
-@Table(name = "etiqueta")
-public class Etiqueta {
+@Table(name = "nota_etiqueta")
+public class NotaEtiquetaEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, unique = true)
-    private String nombre;
+    @Temporal(TemporalType.TIMESTAMP)
+    private LocalDateTime createdAt;
 
-    @OneToMany(mappedBy = "etiqueta")
-    private List<NotaEtiqueta> notaEtiquetaList;
+    @ManyToOne
+    private EtiquetaEntity etiqueta;
+    @ManyToOne
+    private NotaEntity nota;
 }
