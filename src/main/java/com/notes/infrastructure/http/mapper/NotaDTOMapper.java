@@ -5,7 +5,7 @@ import com.notes.infrastructure.http.dto.NotaDTO;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
-@Mapper
+@Mapper(uses = {UsuarioDTOMapper.class})
 public interface NotaDTOMapper {
     NotaDTOMapper INSTANCE = Mappers.getMapper(NotaDTOMapper.class);
 

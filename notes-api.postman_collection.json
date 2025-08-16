@@ -81,7 +81,7 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "{{base_url}}/api/v1/etiqueta/2",
+							"raw": "{{base_url}}/api/v1/etiqueta/1",
 							"host": [
 								"{{base_url}}"
 							],
@@ -89,7 +89,7 @@
 								"api",
 								"v1",
 								"etiqueta",
-								"2"
+								"1"
 							]
 						}
 					},

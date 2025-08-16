@@ -15,8 +15,11 @@ public class ConfigController {
     }
 
     @Bean
-    public NotaService notaServiceBean(NotaAbstract notaAbstract) {
-        return new NotaAdapter(notaAbstract);
+    public NotaService notaServiceBean(
+            NotaAbstract notaAbstract,
+            UsuarioAbstract usuarioAbstract) {
+
+        return new NotaAdapter(notaAbstract, usuarioAbstract);
     }
 
     @Bean

@@ -3,8 +3,6 @@ package com.notes.infrastructure.http.dto;
 import lombok.Builder;
 import lombok.Data;
 
-import java.time.LocalDateTime;
-
 @Data
 @Builder
 public class NotaDTO {
@@ -12,8 +10,6 @@ public class NotaDTO {
     private String titulo;
     private String contenido;
     private boolean estaArchivada;
-    private LocalDateTime createdAt;
-    private LocalDateTime updatedAt;
 
     private UsuarioDTO usuario;
 }
