@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "d063f87d-5668-40e3-be24-55a2ead685e1",
+		"_postman_id": "afc79b64-60e3-4980-be69-fedfd38ba83a",
 		"name": "notes-api",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "38349629"
@@ -315,6 +315,77 @@
 								{
 									"key": "sort",
 									"value": "timestamp,desc"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Rol",
+			"item": [
+				{
+					"name": "Crear rol",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nombre\": \"ADMIN\",\n    \"descripcion\": \"Administrador del sistema\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/rol",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"rol"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar roles",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/rol?page=0&size=10&sort=nombre,asc",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"rol"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "size",
+									"value": "10"
+								},
+								{
+									"key": "sort",
+									"value": "nombre,asc"
 								}
 							]
 						}

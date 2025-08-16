@@ -39,9 +39,5 @@ public class NotaEntity {
     @OneToMany(mappedBy = "nota")
     private List<NotaVersionEntity> notaVersionList;
     @OneToMany(mappedBy = "nota")
-    private List<DetalleNotaEntity> detalleNotaList;
-    @OneToMany(mappedBy = "nota")
-    private List<NotaArchivadaEntity> notaArchivadaList;
-    @OneToMany(mappedBy = "nota")
     private List<NotaEtiquetaEntity> notaEtiquetaList;
 }

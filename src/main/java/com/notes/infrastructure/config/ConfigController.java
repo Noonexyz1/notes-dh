@@ -37,4 +37,9 @@ public class ConfigController {
 
         return new UsuarioAdapter(usuarioAbstract, personaAbstract);
     }
+
+    @Bean
+    public RolService rolServiceBean(RolAbstract rolAbstract) {
+        return new RolAdapter(rolAbstract);
+    }
 }
