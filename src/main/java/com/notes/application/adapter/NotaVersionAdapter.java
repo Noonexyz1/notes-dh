@@ -21,7 +21,7 @@ public class NotaVersionAdapter implements NotaVersionService {
     public Page<NotaVersion> obtenerNotaVersion(Long idNota, Pageable pageable) {
         Optional<Nota> nota = this.notaAbstract.encontrarNota(idNota);
         if (nota.isEmpty()) {
-            throw new RuntimeException("Este id de no ta no existe");
+            throw new RuntimeException("Este id de nota no existe");
         }
         return this.notaVersionAbstract.obtenerNotaVersion(idNota, pageable);
     }

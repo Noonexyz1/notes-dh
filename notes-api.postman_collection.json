@@ -1,0 +1,393 @@
+{
+	"info": {
+		"_postman_id": "d063f87d-5668-40e3-be24-55a2ead685e1",
+		"name": "notes-api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "38349629"
+	},
+	"item": [
+		{
+			"name": "Etiqueta",
+			"item": [
+				{
+					"name": "Crear etiqueta",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nombre\": \"No tan Urgente\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/etiqueta",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"etiqueta"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar etiquetas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/etiqueta?page=0&size=10&sort=nombre,asc",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"etiqueta"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "size",
+									"value": "10"
+								},
+								{
+									"key": "sort",
+									"value": "nombre,asc"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar etiqueta",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/etiqueta/2",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"etiqueta",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Nota",
+			"item": [
+				{
+					"name": "Crear nota",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"titulo\": \"Recordatorio de comida\",\n    \"contenido\": \"Comprar salsa Szechuan\",\n    \"usuario\": {\n        \"id\": 1\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/nota",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"nota"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar notas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/nota?page=0&size=10&sort=createdAt,desc",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"nota"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "size",
+									"value": "10"
+								},
+								{
+									"key": "sort",
+									"value": "createdAt,desc"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener nota por ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/nota/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"nota",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Editar nota",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"titulo\": \"Recordatorio URGENTE\",\n    \"contenido\": \"Comprar salsa Szechuan YA\",\n    \"estaArchivada\": false\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/nota/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"nota",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar nota",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/nota/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"nota",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Archivar nota",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/nota/1/archivar",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"nota",
+								"1",
+								"archivar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Desarchivar nota",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/nota/1/desarchivar",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"nota",
+								"1",
+								"desarchivar"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "NotaVersion",
+			"item": [
+				{
+					"name": "Obtener versiones de nota",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/notaVersion/1?page=0&size=10&sort=timestamp,desc",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"notaVersion",
+								"1"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "size",
+									"value": "10"
+								},
+								{
+									"key": "sort",
+									"value": "timestamp,desc"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Usuario",
+			"item": [
+				{
+					"name": "Crear usuario",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"correo\": \"rick@example.com\",\n    \"contrasena\": \"WubbaLubbaDubDub\",\n    \"persona\": {\n        \"nombre\": \"Rick\",\n        \"apellido\": \"Sanchez\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/usuario/crearUsuario",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"usuario",
+								"crearUsuario"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar usuario",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/usuario/buscarUsuario/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"usuario",
+								"buscarUsuario",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:8080"
+		}
+	]
+}

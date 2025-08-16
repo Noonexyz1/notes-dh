@@ -35,9 +35,8 @@ public class NotaAdapter implements NotaService {
         if (notaEncontrada.isEmpty()) {
             throw new RuntimeException("Esta nota no existe");
         }
-        Nota notaToEdit = notaEncontrada.get();
-        notaToEdit = this.notaAbstract.editarNota(notaToEdit);
-        return notaToEdit;
+        notaEditada.setId(notaEncontrada.get().getId());
+        return this.notaAbstract.editarNota(notaEditada);
     }
 
     @Override

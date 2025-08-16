@@ -1,17 +1,8 @@
 package com.notes.infrastructure.config;
 
-import com.notes.application.adapter.EtiquetaAdapter;
-import com.notes.application.adapter.NotaAdapter;
-import com.notes.application.adapter.NotaVersionAdapter;
-import com.notes.application.adapter.UsuarioAdapter;
-import com.notes.domain.port.in.EtiquetaService;
-import com.notes.domain.port.in.NotaService;
-import com.notes.domain.port.in.NotaVersionService;
-import com.notes.domain.port.in.UsuarioService;
-import com.notes.domain.port.out.persistence.EtiquetaAbstract;
-import com.notes.domain.port.out.persistence.NotaAbstract;
-import com.notes.domain.port.out.persistence.NotaVersionAbstract;
-import com.notes.domain.port.out.persistence.UsuarioAbstract;
+import com.notes.application.adapter.*;
+import com.notes.domain.port.in.*;
+import com.notes.domain.port.out.persistence.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -37,8 +28,10 @@ public class ConfigController {
     }
 
     @Bean
-    public UsuarioService usuarioServiceBean(UsuarioAbstract usuarioAbstract) {
-        return new UsuarioAdapter(usuarioAbstract);
-    }
+    public UsuarioService usuarioServiceBean(
+            UsuarioAbstract usuarioAbstract,
+            PersonaAbstract personaAbstract) {
 
+        return new UsuarioAdapter(usuarioAbstract, personaAbstract);
+    }
 }

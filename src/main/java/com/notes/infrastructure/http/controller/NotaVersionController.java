@@ -20,8 +20,7 @@ public class NotaVersionController {
     @Autowired
     private NotaVersionService notaVersionService;
 
-    // GET /api/v1/notas/1/versiones?page=0&size=10&sort=fechaModificacion,desc
-    @GetMapping
+    @GetMapping("/{idNota}")
     public ResponseEntity<Page<NotaVersionDTO>> obtenerVersionesDeNota(
             @PathVariable Long idNota,
             Pageable pageable) {

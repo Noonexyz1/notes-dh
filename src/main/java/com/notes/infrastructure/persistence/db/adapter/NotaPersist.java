@@ -53,7 +53,7 @@ public class NotaPersist implements NotaAbstract {
 
     @Override
     public void eliminarNota(Long idNota) {
-
+        this.notaRepository.deleteById(idNota);
     }
 
     @Override
