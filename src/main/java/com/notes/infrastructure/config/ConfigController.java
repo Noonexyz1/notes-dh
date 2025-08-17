@@ -42,4 +42,16 @@ public class ConfigController {
     public RolService rolServiceBean(RolAbstract rolAbstract) {
         return new RolAdapter(rolAbstract);
     }
+
+    @Bean
+    public NotaEtiquetaService notaEtiquetaServiceBean(
+            NotaEtiquetaAbstract notaEtiquetaAbstract,
+            EtiquetaAbstract etiquetaAbstract,
+            NotaAbstract notaAbstract) {
+
+        return new NotaEtiquetaAdapter(
+                notaEtiquetaAbstract,
+                etiquetaAbstract,
+                notaAbstract);
+    }
 }

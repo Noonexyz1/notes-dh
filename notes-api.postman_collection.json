@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "afc79b64-60e3-4980-be69-fedfd38ba83a",
+		"_postman_id": "20a04738-ca6b-404e-98c5-f5aad8ba6da1",
 		"name": "notes-api",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "38349629"
@@ -277,6 +277,44 @@
 								"nota",
 								"1",
 								"desarchivar"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "NotaEtiqueta",
+			"item": [
+				{
+					"name": "Crear nota-etiqueta",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"etiqueta\": {\n        \"id\": 1\n    },\n    \"nota\": {\n        \"id\": 1\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/notaEtiqueta",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"notaEtiqueta"
 							]
 						}
 					},

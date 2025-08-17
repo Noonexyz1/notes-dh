@@ -10,6 +10,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
 
+import java.util.Optional;
+
 @Component
 public class EtiquetaPersist implements EtiquetaAbstract {
 
@@ -36,5 +38,11 @@ public class EtiquetaPersist implements EtiquetaAbstract {
             throw new RuntimeException("Etiqueta no encontrada con id: " + idEtiqueta);
         }
         etiquetaRepository.deleteById(idEtiqueta);
+    }
+
+    @Override
+    public Optional<Etiqueta> encontrarEtiquetaPorId(Long idEtiqueta) {
+        Optional<EtiquetaEntity> etiqueta = this.etiquetaRepository.findById(idEtiqueta);
+        return etiqueta.map(EtiquetaMapper.INSTANCE::toEtiqueta);
     }
 }
